@@ -9,7 +9,8 @@ Laboratory works for the course "Supercomputers and High Performance Computing".
 
 ## Enviroment setup
 First, install the requirements:
-```
+
+```bash
 apt update
 apt install gcc
 apt install clang
@@ -21,6 +22,7 @@ apt install openmpi-bin
 ## Open MP
 You can test programs via `gcc/g++` or `clang` writing via Open MP.
 For example, simple program via Open MP on C language:
+
 ```c
 #include "stdio.h"
 #include "omp.h"
@@ -37,18 +39,21 @@ int main() {
 ```
 
 Compile this program like this:
-```
+
+```bash
 gcc -fopenmp hello_openmp.c
-``
+```
 
 Next, need to setup count of threads in enviroments. For example, we need to use 4 theads, 
 then execute following command on terminal:
-```
+
+```bash
 export OMP_NUM_THREADS=4
 ```
 
 And if execute this program with 4 threads, resul of the executing will look like this:
-```
+
+```bash
 ./a.out
 Hello, OpenMP! I am 1 of 8
 Hello, OpenMP! I am 0 of 8
@@ -61,12 +66,14 @@ Hello, OpenMP! I am 7 of 8
 ```
 
 Or with 4 threads count like:
-```
+
+```bash
 export OMP_NUM_THREADS=4
 ```
 
 Output:
-```
+
+```bash
 Hello, OpenMP! I am 0 of 2
 Hello, OpenMP! I am 1 of 2
 ```
