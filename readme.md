@@ -19,65 +19,23 @@ apt install libomp-dev
 apt install openmpi-bin
 ```
 
-## Open MP
-You can test programs via `gcc/g++` or `clang` writing via Open MP.
-For example, simple program via Open MP on C language:
+CMake configurations:
+```cmake
+cmake_minimum_required(VERSION 3.18.4)
+project(MyProject)
 
-```c
-#include "stdio.h"
-#include "omp.h"
+set(CMAKE_CXX_STANDARD 17)
 
-int main() {
-#pragma omp parallel
-    {
-        int count = omp_get_thread_num();
-        int its_me = omp_get_num_threads();
-        printf("Hello, OpenMP! I am %d of %d\n", count, its_me);
-    }
-    return 0;
-}
+find_package (MPI)
+
+set (EXTRA_INCLUDES ${MPI_CXX_INCLUDE_DIRS})
+set (EXTRA_CXX_FLAGS ${EXTRA_CXX_FLAGS} ${MPI_CXX_COMPILE_FLAGS})
+set (EXTRA_LIBS "${EXTRA_LIBS} ${MPI_CXX_LIBRARIES}")
+set (EXTRA_LIBS "${EXTRA_LIBS} ${MPI_CXX_LINK_FLAGS}")
+
+add_executable(MyProject main.cpp)
+
+target_include_directories (MyProject PUBLIC ${MPI_CXX_INCLUDE_DIRS})
+target_link_libraries (MyProject ${MPI_CXX_LIBRARIES})
+
 ```
-
-Compile this program like this:
-
-```bash
-gcc -fopenmp hello_openmp.c
-```
-
-Next, need to setup count of threads in enviroments. For example, we need to use 4 theads, 
-then execute following command on terminal:
-
-```bash
-export OMP_NUM_THREADS=4
-```
-
-And if execute this program with 4 threads, resul of the executing will look like this:
-
-```bash
-./a.out
-Hello, OpenMP! I am 1 of 8
-Hello, OpenMP! I am 0 of 8
-Hello, OpenMP! I am 3 of 8
-Hello, OpenMP! I am 6 of 8
-Hello, OpenMP! I am 2 of 8
-Hello, OpenMP! I am 5 of 8
-Hello, OpenMP! I am 4 of 8
-Hello, OpenMP! I am 7 of 8
-```
-
-Or with 4 threads count like:
-
-```bash
-export OMP_NUM_THREADS=4
-```
-
-Output:
-
-```bash
-Hello, OpenMP! I am 0 of 2
-Hello, OpenMP! I am 1 of 2
-```
-
-## Open MPI
-
-In progress...
