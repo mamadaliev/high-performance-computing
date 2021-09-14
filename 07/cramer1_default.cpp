@@ -68,15 +68,13 @@ int main() {
     double d3 = determinant(matrix, 2);
     double d4 = determinant(matrix, 3);
 
-    // Шаг 3. Находим корни (можно распараллелить)
-    double x1 = (d1 != 0) ? d1 / d : 0;
-    double x2 = (d2 != 0) ? d2 / d : 0;
-    double x3 = (d3 != 0) ? d3 / d : 0;
-    double x4 = (d4 != 0) ? d4 / d : 0;
+    // Шаг 3. Находим корни
+    double x1 = d1 / d;
+    double x2 = d2 / d;
+    double x3 = d3 / d;
+    double x4 = d4 / d;
 
     printf("x1 = %f\nx2 = %f\nx3 = %f\nx4 = %f\n", x1, x2, x3, x4);
-
-    printf("-----");
 
     return 0;
 }
