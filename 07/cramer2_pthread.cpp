@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include "pthread.h"
 
 using namespace std;
 
@@ -75,6 +76,8 @@ int main() {
         return 0;
     }
 
+    printf("Главный определитель равен %f\n", main_d);
+
     pthread_t threads[N];
     Params params[N];
 
@@ -92,8 +95,6 @@ int main() {
     for (unsigned long thread: threads) {
         pthread_join(thread, nullptr);
     }
-
-    printf("Главный определитель равен %f\n", params[0].result);
 
     // Шаг 3. Находим корни в главном потоке.
     // Здесь также можно выпольнить вычисления корней в разных потоках как с доп. определителями.
