@@ -55,7 +55,7 @@ double determinant(vector<vector<int>> matrix, int n) {
 }
 
 int main() {
-    double main_d, x[N];
+    double main_d, result[N], x[N];
 
     // Объявление матрицы 5x5.
     vector<vector<int>> matrix = {
@@ -74,8 +74,6 @@ int main() {
     }
 
     printf("Главный определитель равен %f\n", main_d);
-
-    double result[N];
 
     // Шаг 2. Находим вспомогательных определителей системы в разных потоках.
 #pragma omp parallel for
