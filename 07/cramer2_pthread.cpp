@@ -54,7 +54,6 @@ void *determinant(void *params) {
     }
     p->result = determinant_4x4(p->matrix);
     pthread_exit(nullptr);
-    return nullptr;
 }
 
 int main() {
