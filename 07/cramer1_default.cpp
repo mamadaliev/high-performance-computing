@@ -3,12 +3,14 @@
 
 using namespace std;
 
-double determinant(vector<vector<int>> m) {
+#define N 4
+
+double determinant_3x3(vector<vector<int>> m) {
     return m[0][0] * m[1][1] * m[2][2] - m[0][0] * m[2][1] * m[1][2] - m[0][1] * m[1][0] * m[2][2] +
            m[0][1] * m[2][0] * m[1][2] + m[0][2] * m[1][0] * m[2][1] - m[0][2] * m[2][0] * m[1][1];
 }
 
-double main_determinant(vector<vector<int>> matrix) {
+double determinant_4x4(vector<vector<int>> matrix) {
     vector<vector<int>> D1 = {
             {matrix[1][1], matrix[1][2], matrix[1][3]},
             {matrix[2][1], matrix[2][2], matrix[2][3]},
@@ -29,23 +31,25 @@ double main_determinant(vector<vector<int>> matrix) {
             {matrix[2][0], matrix[2][1], matrix[2][2]},
             {matrix[3][0], matrix[3][1], matrix[3][2]}
     };
-    return matrix[0][0] * determinant(D1) - matrix[0][1] * determinant(D2) + matrix[0][2] * determinant(D3) -
-           matrix[0][3] * determinant(D4);
+    return matrix[0][0] * determinant_3x3(D1) - matrix[0][1] * determinant_3x3(D2) +
+           matrix[0][2] * determinant_3x3(D3) - matrix[0][3] * determinant_3x3(D4);
 }
 
 double determinant(vector<vector<int>> matrix, int n) {
     int temp;
-    for (auto & row : matrix) {
+    for (auto &row: matrix) {
         for (int j = 0; j < row.size(); ++j) {
             temp = row[n];
             row[n] = row[row.size() - 1];
             row[row.size() - 1] = temp;
         }
     }
-    return main_determinant(matrix);
+    return determinant_4x4(matrix);
 }
 
 int main() {
+    double main_d, result[N], x[N];
+
     // объявление матрицы 4x4
     vector<vector<int>> matrix = {
             {1, 3, 5, 7, 12},
@@ -55,26 +59,25 @@ int main() {
     };
 
     // Шаг 1. Находим главный опеределитель системы
-    double d = main_determinant(matrix);
+    main_d = determinant_4x4(matrix);
 
-    if (d == 0) {
+    if (main_d == 0) {
         cout << "Главный определитель равень нулю. Система не имеет решений.\n";
         return 0;
     }
 
+    printf("Главный определитель равен %f\n", main_d);
+
     // Шаг 2. Находим вспомогательных определителей системы
-    double d1 = determinant(matrix, 0);
-    double d2 = determinant(matrix, 1);
-    double d3 = determinant(matrix, 2);
-    double d4 = determinant(matrix, 3);
+    for (int i = 0; i < N; ++i) {
+        result[i] = determinant(matrix, i);
+    }
 
     // Шаг 3. Находим корни
-    double x1 = d1 / d;
-    double x2 = d2 / d;
-    double x3 = d3 / d;
-    double x4 = d4 / d;
+    for (int i = 0; i < N; ++i) {
+        x[i] = result[i] / main_d;
+    }
 
-    printf("x1 = %f\nx2 = %f\nx3 = %f\nx4 = %f\n", x1, x2, x3, x4);
-
+    printf("x1 = %f\nx2 = %f\nx3 = %f\nx4 = %f\n", x[0], x[1], x[2], x[3]);
     return 0;
 }
