@@ -73,4 +73,4 @@ https://math.semestr.ru/kramer/prim1.php
 ### Схема работы потоков
 ![Screenshot from 2021-09-15 20-34-11](https://user-images.githubusercontent.com/32206555/133481860-8d6629cf-fbe4-4d5d-a581-2abad86ec7cb.png)
 ![Screenshot from 2021-09-15 20-34-24](https://user-images.githubusercontent.com/32206555/133481868-676b842b-d63b-4fc1-af16-afc1726ac71b.png)
-![Screenshot from 2021-09-15 20-34-33](https://user-images.githubusercontent.com/32206555/133481880-34bf816d-36cc-4862-a443-4a9b9704604d.png)
+![Screenshot from 2021-09-15 20-37-40](https://user-images.githubusercontent.com/32206555/133482331-19e4b822-9ff1-4df6-9b2d-e2758af9dc04.png)
