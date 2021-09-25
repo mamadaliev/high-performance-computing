@@ -13,11 +13,10 @@ vector<vector<int>> &
 multiply(int n1, int n2, int n3, const vector<vector<int>> &A, const vector<vector<int>> &B, vector<vector<int>> &C);
 
 int main() {
-    int n1, n2, n3;
+    int n1 = 3, n2 = 4, n3 = 3;
     int c_x_size, c_y_size;
     std::ifstream in("in.txt");
     std::ofstream out("out.txt");
-    in >> n1 >> n2 >> n3;
 
     vector<vector<int>> A(n1, vector<int>(n2));
     vector<vector<int>> B(n2, vector<int>(n3));
