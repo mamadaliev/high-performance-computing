@@ -22,8 +22,10 @@ mpicc parallel_matrix_multiplication.cpp
 
 Команда для запуска:
 ```
-mpirun -n 4 parallel_matrix_multiplication.cpp
+mpirun -n 4 ./a.out
 ```
 
 ## Демонстрация
 ...
+
+## Статистика
