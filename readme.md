@@ -1,4 +1,4 @@
-# supercomputers-and-high-performance-computing
+# high-performance-computing
 Laboratory works for the course "Supercomputers and High Performance Computing".
 
 ## Requirements
